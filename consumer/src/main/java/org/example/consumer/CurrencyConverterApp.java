@@ -14,19 +14,27 @@ public class CurrencyConverterApp {
 
         ServiceLoader<CurrencyConverter> currencyConverters = ServiceLoader.load(CurrencyConverter.class);
 
-       Scanner scanner = new Scanner(System.in);
-       System.out.println("Please enter the amount:");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter the amount:");
 
         double amount = scanner.nextDouble();
 
-                for ( var currency : currencyConverters) {
-            System.out.println(currency.convert(amount));
-                }
+
+        for (var currency : currencyConverters) {
+            String output = currency.convert(amount);
+            if (output.startsWith("SEK")) {
+                System.out.println(output);
+            }
 
 
-
-
+        }
+        for (var currency : currencyConverters) {
+            String output = currency.convert(amount);
+            if (output.startsWith("EURO")) {
+                System.out.println(output);
+            }
+        }
     }
-
-
 }
+
+
